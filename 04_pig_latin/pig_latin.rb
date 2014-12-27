@@ -1,26 +1,39 @@
 AY = 'ay'
 
 def translate(input)
-	firstPart = ''
 	splitArr = input.split(' ')
 	output = ''
+	prevChar = ''
+
+	#print("splitArr 1:\n")
+	#puts(splitArr)
 
 	for i in 0..splitArr.length - 1
+		firstPart = ''
 		for j in 0..splitArr[i].length - 1
-			if isVowel(splitArr[i][j])
+			if isVowel(splitArr[i][j]) && (splitArr[i][j] != 'u' && prevChar != 'q')
 				if j == 0
 					splitArr[i] += AY
 					break
-				elsif
+				else
 					temp = splitArr[i].split(firstPart)
-					#puts('temp: ' + temp[1])
+					#print("temp:\n")
+					#puts(temp)
+					#print('print: ')
+					#print("splitArr 2:\n")
+					#puts(splitArr)
+					#puts('puts: ' + firstPart)
 					splitArr[i] = temp[1]
+					#print("splitArr[i]:\n")
+					#puts(splitArr[i])
 					splitArr[i] += firstPart + AY
 					break
 				end
 			end
 			firstPart += splitArr[i][j]
-			#puts('firstPart: ' + firstPart)
+			#puts('firstPart:')
+			#puts(firstPart)
+			prevChar = splitArr[i][j]
 		end
 	end
 
@@ -53,3 +66,6 @@ puts(translate('banana'))
 puts(translate('cherry'))
 puts(translate('eat pie'))
 puts(translate('i am stupid'))
+puts(translate('quiet'))
+puts(translate('quick'))
+puts(translate('the quick brown fox'))
