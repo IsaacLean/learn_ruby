@@ -12,7 +12,7 @@ def translate(input)
 				break
 			elsif
 				temp = input.split(firstPart)
-				output = temp[0]
+				output = temp[1]
 				output += firstPart + AY
 				break
 			end
