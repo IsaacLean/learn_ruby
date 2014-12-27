@@ -2,23 +2,34 @@ AY = 'ay'
 
 def translate(input)
 	firstPart = ''
+	splitArr = input.split(' ')
 	output = ''
 
-	for i in 0..input.length - 1
-		if isVowel(input[i])
-			if i == 0
-				output = input
-				output += AY
-				break
-			elsif
-				temp = input.split(firstPart)
-				output = temp[1]
-				output += firstPart + AY
-				break
+	for i in 0..splitArr.length - 1
+		for j in 0..splitArr[i].length - 1
+			if isVowel(splitArr[i][j])
+				if j == 0
+					splitArr[i] += AY
+					break
+				elsif
+					temp = splitArr[i].split(firstPart)
+					#puts('temp: ' + temp[1])
+					splitArr[i] = temp[1]
+					splitArr[i] += firstPart + AY
+					break
+				end
 			end
+			firstPart += splitArr[i][j]
+			#puts('firstPart: ' + firstPart)
 		end
+	end
 
-		firstPart += input[i]
+	for i in 0..splitArr.length - 1
+		output += splitArr[i]
+
+		if i != splitArr.length - 1
+			output += ' '
+		end
 	end
 
 	return output
@@ -39,3 +50,6 @@ end
 
 puts(translate('apple'))
 puts(translate('banana'))
+puts(translate('cherry'))
+puts(translate('eat pie'))
+puts(translate('i am stupid'))
